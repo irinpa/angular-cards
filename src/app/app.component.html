@@ -1,6 +1,14 @@
 <h1>Look at my cards</h1>
 <hr>
-    <button (click)="toggleCards()">Toggle cards</button>
+    
+    <!-- <svg (click)="toggleCards()" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> testText -->
+
+    <!-- <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-minus-2.png" (click)="toggleCards()"> testText  -->
+
+    <svg (click)="toggleCards()" class="svg-icon" width="12" height="12" viewBox="0 0 24 24">
+        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+    </svg>   testText 
+
 <hr>
 
 <div *ngIf="toggle; else noCards">
