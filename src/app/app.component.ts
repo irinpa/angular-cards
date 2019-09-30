@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-export interface Card{
-  title: string;
-  text: string
-}
+import { PostModel } from 'src/app/models/post-model';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +7,21 @@ export interface Card{
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-cards';
 
-  toggle = true;
-
-  cards: Card[] = [
-    {title: 'Card 1', text: 'This is card 1'},
-    {title: 'Card 2', text: 'This is card number 2'},
-    {title: 'Last One', text: 'This is the last card'}
+  posts: PostModel[] = [
+    {title: 'Man of Few Words', text: 'A person who does not speak a great deal; someone who talks with as few words as possible.', id: 1},
+    {title: 'Keep Your Shirt On', text: 'Keeping calm. Usually said by someone who is trying to avoid making others upset.', id: 2},
+    {title: 'Eat My Hat', text: 'Having confidence in a specific outcome; being almost sure about something.'}
   ]
 
-  toggleCards(){
-    this.toggle = !this.toggle;
+  updatePosts(post: PostModel){
+    console.log(post);
+    this.posts.unshift(post);
   }
+
+  removePost(id: number) {
+    console.log('from App')
+    this.posts = this.posts.filter(p => p.id != id)
+  }
+
 }

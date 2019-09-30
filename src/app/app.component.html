@@ -1,24 +1,22 @@
-<h1>Look at my cards</h1>
-<hr>
-    
-    <!-- <svg (click)="toggleCards()" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> testText -->
+<div class="container">
+    <h1>Post Wall</h1>
 
-    <!-- <img src="https://img.icons8.com/ios-glyphs/30/000000/plus-minus-2.png" (click)="toggleCards()"> testText  -->
+    <app-post-form
+        (onAdd)="updatePosts($event)"
+    ></app-post-form>
 
-    <svg (click)="toggleCards()" class="svg-icon" width="12" height="12" viewBox="0 0 24 24">
-        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-    </svg>   testText 
+    <hr />
 
-<hr>
+    <app-post 
+       *ngFor="let item of posts"
+       [post]="item"
+       (onRemove)="removePost($event)"
+    >
+        <small *ngIf="item.text.length > 10; else short">This post is loooooooong! Good!</small>
+        <ng-template #short>
+            <small>Too short is the post :(</small>
+        </ng-template>
 
-<div *ngIf="toggle; else noCards">
-    <app-card
-    *ngFor="let iterCard of cards"
-    [card]="iterCard">
-    </app-card>
+    </app-post>
+
 </div>
-
-<ng-template #noCards>
-    <p>Cards are hidden</p>
-
-</ng-template>
